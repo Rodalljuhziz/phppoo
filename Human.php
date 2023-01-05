@@ -6,6 +6,8 @@ class Human
     public $nee = 'je suis née';
     public $mort ='je suis morte';
 
+    private $secret;
+
     public function  showSize(){
         echo $this->taille;
     }
@@ -13,26 +15,45 @@ class Human
         echo "Hey, im walking here";
     }
 
-    public function maTaille($taille){
-        return $taille +=1;
+    public function maTaille(){
+        echo ($this->taille++);
+        return $this->taille;
     }
 
-    public function __construct(){
+   /* public function __construct($nomDeFamille){
+        $nom = $nomDeFamille;
         $this->nee = function (){
-            echo $nee;
+            echo $this->nee;
         };
-    }
+    }*/
 
     public function __destruc(){
         $this->mort = function() {
-            echo $mort;
+            echo this->$mort;
         };
+    }
+
+    public function setSecret($secret){
+        $this->secret = $secret;
+    }
+    public function getSecret(){
+        return $this->secret;
     }
 }
 
-$marceline = new Human();
-$constance = new Human();
+class Homme extends Human
+{
+
+}
+
+class Femme extends Human
+{
+
+}
+
+$marceline = new Femme();
+$constance = new Femme();
 $marceline->marcher();
 $constance->showSize();
-echo ($constance->nee)(), PHP_EOL;
-echo $constance->maTaille(178);
+//echo $constance->nee(), PHP_EOL;
+echo $constance->maTaille();
